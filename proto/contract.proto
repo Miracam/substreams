@@ -1,0 +1,141 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package contract.v1;
+message Events {
+    repeated Nft_Approval nft_approvals = 1;
+    repeated Nft_ApprovalForAll nft_approval_for_alls = 2;
+    repeated Nft_BatchMetadataUpdate nft_batch_metadata_updates = 3;
+    repeated Nft_MetadataUpdate nft_metadata_updates = 4;
+    repeated Nft_RoleAdminChanged nft_role_admin_changeds = 5;
+    repeated Nft_RoleGranted nft_role_granteds = 6;
+    repeated Nft_RoleRevoked nft_role_revokeds = 7;
+    repeated Nft_Transfer nft_transfers = 8;
+    repeated Attester_Attested attester_attesteds = 9;
+    repeated Attester_OwnershipTransferRequested attester_ownership_transfer_requesteds = 10;
+    repeated Attester_OwnershipTransferred attester_ownership_transferreds = 11;
+    repeated Attester_RequestFulfilled attester_request_fulfilleds = 12;
+    repeated Attester_RequestSent attester_request_sents = 13;
+    repeated Attester_Response attester_responses = 14;
+}
+message Nft_Approval {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes owner = 5;
+    bytes approved = 6;
+    string token_id = 7;
+}
+message Nft_ApprovalForAll {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes owner = 5;
+    bytes operator = 6;
+    bool approved = 7;
+}
+message Nft_BatchMetadataUpdate {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string u_from_token_id = 5;
+    string u_to_token_id = 6;
+}
+message Nft_MetadataUpdate {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    string u_token_id = 5;
+}
+message Nft_RoleAdminChanged {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes role = 5;
+    bytes previous_admin_role = 6;
+    bytes new_admin_role = 7;
+}
+message Nft_RoleGranted {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes role = 5;
+    bytes account = 6;
+    bytes sender = 7;
+}
+message Nft_RoleRevoked {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes role = 5;
+    bytes account = 6;
+    bytes sender = 7;
+}
+message Nft_Transfer {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes from = 5;
+    bytes to = 6;
+    string token_id = 7;
+}
+  
+message Attester_Attested {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes request_id = 5;
+    bytes owner = 6;
+    string attester = 7;
+    string url = 8;
+}
+message Attester_OwnershipTransferRequested {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes from = 5;
+    bytes to = 6;
+}
+message Attester_OwnershipTransferred {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes from = 5;
+    bytes to = 6;
+}
+message Attester_RequestFulfilled {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes id = 5;
+}
+message Attester_RequestSent {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes id = 5;
+}
+message Attester_Response {
+    string evt_tx_hash = 1;
+    uint32 evt_index = 2;
+    google.protobuf.Timestamp evt_block_time = 3;
+    uint64 evt_block_number = 4;
+    bytes request_id = 5;
+    bytes response = 6;
+    bytes err = 7;
+}
+  
